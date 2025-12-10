@@ -28,9 +28,9 @@ export class Filme {
   @CreateDateColumn()
   dataCriacao: Date;
 
-  @OneToMany(() => Avaliacao, avaliacao => avaliacao.filme)
-  avaliacoes: Avaliacao[];
-
-  @OneToMany(() => Comentario, comentario => comentario.filme)
+  @OneToMany(() => Comentario, (comentario) => comentario.filme, { cascade: true, onDelete: 'CASCADE' })
   comentarios: Comentario[];
-}
+
+  @OneToMany(() => Avaliacao, (avaliacao) => avaliacao.filme, { cascade: true, onDelete: 'CASCADE' })
+  avaliacoes: Avaliacao[];
+  }
